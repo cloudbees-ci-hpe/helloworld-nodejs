@@ -41,6 +41,13 @@ pipeline {
             FAVORITE_COLOR = 'BLUE'
             SERVICE_CREDS = credentials('example-service-username-password')
           }
+          when {
+            environment name: 'FAVORITE_COLOR', value: 'BLUE'
+          }
+          input {
+            message "Should we continue with deployment?"
+          }
+
           steps {
             echo "TODO - deploy to $FAVORITE_COLOR with SERVICE_CREDS: username=$SERVICE_CREDS_USR password=$SERVICE_CREDS_PSW"
           }
